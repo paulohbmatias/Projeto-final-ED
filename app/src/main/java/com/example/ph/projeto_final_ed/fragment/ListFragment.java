@@ -1,12 +1,15 @@
 package com.example.ph.projeto_final_ed.fragment;
 
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -16,8 +19,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +31,13 @@ import com.example.ph.projeto_final_ed.helper.LDE;
 import com.example.ph.projeto_final_ed.helper.ListAdapter;
 import com.example.ph.projeto_final_ed.model.ListModel;
 
+import static com.example.ph.projeto_final_ed.R.id.searchView;
 import static com.example.ph.projeto_final_ed.R.layout.list_add;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment implements View.OnCreateContextMenuListener {
+public class ListFragment extends Fragment implements View.OnCreateContextMenuListener, SearchView.OnQueryTextListener {
 
     private LDE lde;
     private ListView listView;
@@ -39,7 +45,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
     private ListModel[] listModel;
     private FloatingActionButton floatingActionButton;
     private TextView textSize;
-
+    private Spinner spinner;
     public ListFragment() {
         // Required empty public constructor
     }
@@ -54,7 +60,9 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         listView = view.findViewById(R.id.list);
         floatingActionButton = view.findViewById(R.id.floatingActionButton);
         textSize = view.findViewById(R.id.text_list_size);
+        spinner = view.findViewById(R.id.spinner);
 
+        configurarSpinner();
 
         listView.setOnCreateContextMenuListener(this);
         lde = new LDE();
@@ -103,6 +111,19 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         listView.setAdapter(listAdapter);
     }
 
+    private void configurarSpinner(){
+        String[] items = new String[]{"Position", "Content"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        spinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -123,5 +144,19 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        Toast.makeText(getActivity(), newText, Toast.LENGTH_SHORT).show();
+        return false;
     }
 }
