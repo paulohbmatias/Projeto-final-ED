@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Projeto_final_ED</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_list">List</string>
+    <string name="title_stack">Stack</string>
+    <string name="title_queue">Queue</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="position">Position</string>
+    <string name="content">Content</string>
+    <string name="value_position">value position</string>
+    <string name="list_content">list content</string>
+    <string name="size_list">List Size</string>
+</resources>
