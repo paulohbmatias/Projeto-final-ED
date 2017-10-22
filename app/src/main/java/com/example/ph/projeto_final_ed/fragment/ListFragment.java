@@ -113,12 +113,12 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         dialog.show();
     }
 
-    private void configuraLista(LDE lde, boolean bposition, int valorAlternativo){
-        listModel = new ListModel[lde.tamanho()];
-        for(int i =  0; i<lde.tamanho(); i++){
-            listModel[i] = new ListModel(i, lde.elemento(i+1));
+    private void configuraLista(LDE ldePassada, boolean bposition, int valorAlternativo){
+        listModel = new ListModel[ldePassada.tamanho()];
+        for(int i =  0; i<ldePassada.tamanho(); i++){
+            listModel[i] = new ListModel(i, ldePassada.elemento(i+1));
         }
-        if(lde.vazia())
+        if(ldePassada.vazia())
             textSize.setText("Empty list");
         else
             textSize.setText("List Size: "+lde.tamanho());
