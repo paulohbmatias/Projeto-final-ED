@@ -46,6 +46,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
     private FloatingActionButton floatingActionButton;
     private TextView textSize;
     private Spinner spinner;
+    private SearchView searchView;
     public ListFragment() {
         // Required empty public constructor
     }
@@ -61,12 +62,27 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         floatingActionButton = view.findViewById(R.id.floatingActionButton);
         textSize = view.findViewById(R.id.text_list_size);
         spinner = view.findViewById(R.id.spinner);
+        searchView = view.findViewById(R.id.searchView);
+        //searchView.setIconifiedByDefault(false);
+        searchView.setOnQueryTextListener(this);
+
+
 
         configurarSpinner();
 
         listView.setOnCreateContextMenuListener(this);
         lde = new LDE();
-        configuraLista();
+        lde.insere(1, 9);
+        lde.insere(1, 8);
+        lde.insere(1, 7);
+        lde.insere(1, 6);
+        lde.insere(1, 5);
+        lde.insere(1, 4);
+        lde.insere(1, 3);
+        lde.insere(1, 2);
+        lde.insere(1, 1);
+
+        configuraLista(lde, false, 0);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,14 +106,14 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
                 int position = Integer.parseInt(newPosition.getText().toString());
                 int content = Integer.parseInt(newContent.getText().toString());
                 lde.insere(position, content);
-                configuraLista();
+                configuraLista(lde, false, 0);
             }
         });
         dialog.create();
         dialog.show();
     }
 
-    private void configuraLista(){
+    private void configuraLista(LDE lde, boolean bposition, int valorAlternativo){
         listModel = new ListModel[lde.tamanho()];
         for(int i =  0; i<lde.tamanho(); i++){
             listModel[i] = new ListModel(i, lde.elemento(i+1));
@@ -107,7 +123,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         else
             textSize.setText("List Size: "+lde.tamanho());
 
-        listAdapter = new ListAdapter(getActivity(), listModel);
+        listAdapter = new ListAdapter(getActivity(), listModel, bposition, valorAlternativo);
         listView.setAdapter(listAdapter);
     }
 
@@ -119,7 +135,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        
+
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -139,7 +155,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         if(item.getTitle().equals("Remover")){
             position = info.position + 1;
             lde.remove(position);
-            configuraLista();
+            configuraLista(lde, false, 0);
             return true;
         }
 
@@ -148,15 +164,32 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-
-        Toast.makeText(getActivity(), query, Toast.LENGTH_SHORT).show();
-
+        int q = Integer.parseInt(query);
+        if(spinner.getSelectedItemId()==0){
+            if(lde.elemento(q) == -1){
+                Toast.makeText(getContext(), "Consulta falhou", Toast.LENGTH_SHORT).show();
+            }else{
+                LDE lde1 = new LDE();
+                lde1.insere(1, lde.elemento(q));
+                configuraLista(lde1, true, q);
+                listAdapter.setNotifyOnChange(true);
+            }
+        }else {
+            if(lde.posicao(q) == -1){
+                Toast.makeText(getContext(), "Consulta falhou", Toast.LENGTH_SHORT).show();
+            }else{
+                LDE lde1 = new LDE();
+                lde1.insere(1, q);
+                configuraLista(lde1, true, lde.posicao(q));
+            }
+        }
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        Toast.makeText(getActivity(), newText, Toast.LENGTH_SHORT).show();
+        if(newText.equals(""))
+            configuraLista(lde, false, 0);
         return false;
     }
 }

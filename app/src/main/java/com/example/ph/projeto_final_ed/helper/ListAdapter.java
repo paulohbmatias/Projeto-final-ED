@@ -16,11 +16,15 @@ import com.example.ph.projeto_final_ed.model.ListModel;
 public class ListAdapter extends ArrayAdapter<ListModel> {
     private Context context;
     private ListModel[] listModel;
+    private boolean bposition;
+    private int valorAlternativo;
 
-    public ListAdapter(@NonNull Context context, @NonNull ListModel[] objects) {
+    public ListAdapter(@NonNull Context context, @NonNull ListModel[] objects, boolean bposition, int valorAlternativo) {
         super(context, 0, 0, objects);
         this.context = context;
         this.listModel = objects;
+        this.bposition = bposition;
+        this.valorAlternativo = valorAlternativo;
     }
 
 
@@ -43,7 +47,10 @@ public class ListAdapter extends ArrayAdapter<ListModel> {
 
 
             //Adicionar elementos a lista
-            tposition.setText(""+(position+1));
+            if(bposition)
+                tposition.setText(""+valorAlternativo);
+            else
+                tposition.setText(""+(position+1));
             tcontent.setText(""+ listModel[position].getContent());
         }
 
