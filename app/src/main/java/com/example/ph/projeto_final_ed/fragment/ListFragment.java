@@ -65,15 +65,6 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
 
         listView.setOnCreateContextMenuListener(this);
         lde = new LDE();
-        lde.insere(1, 9);
-        lde.insere(1, 8);
-        lde.insere(1, 7);
-        lde.insere(1, 6);
-        lde.insere(1, 5);
-        lde.insere(1, 4);
-        lde.insere(1, 3);
-        lde.insere(1, 2);
-        lde.insere(1, 1);
 
         configuraLista(lde, false, 0);
 
@@ -98,8 +89,11 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
             public void onClick(DialogInterface dialog, int which) {
                 int position = Integer.parseInt(newPosition.getText().toString());
                 int content = Integer.parseInt(newContent.getText().toString());
-                lde.insere(position, content);
-                configuraLista(lde, false, 0);
+                if(lde.insere(position, content))
+                    configuraLista(lde, false, 0);
+                else
+                    Toast.makeText(getContext(), "Posição inválida", Toast.LENGTH_SHORT).show();
+
             }
         });
         dialog.create();

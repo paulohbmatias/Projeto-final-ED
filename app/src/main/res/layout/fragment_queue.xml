@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.ph.projeto_final_ed.fragment.StackFragment"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.ph.projeto_final_ed.fragment.QueueFragment">
 
     <TextView
-        android:id="@+id/text_stack_size"
+        android:id="@+id/text_queue_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="false"
@@ -20,14 +18,12 @@
         android:text="@string/size_list"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="14sp"
-        android:layout_above="@+id/text_stack_top"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/floatingActionButtonRemove"
-        android:layout_toStartOf="@+id/floatingActionButtonRemove" />
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/text_stack_top"
+        android:id="@+id/text_queue_front_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="false"
@@ -35,19 +31,16 @@
         android:text="@string/top_stack"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="14sp"
+        android:layout_below="@+id/text_queue_size"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/floatingActionButtonRemove"
-        android:layout_toStartOf="@+id/floatingActionButtonRemove"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/floatingActionButtonRemove" />
+        android:layout_above="@+id/floatingActionButtonRemove"
+        android:layout_below="@+id/text_queue_front_element" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonRemove"

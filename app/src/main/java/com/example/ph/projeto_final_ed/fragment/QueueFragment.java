@@ -9,13 +9,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
+import com.example.ph.projeto_final_ed.helper.FilaEnc;
 import com.example.ph.projeto_final_ed.helper.PilhaEnc;
 import com.example.ph.projeto_final_ed.helper.StackAdapter;
 import com.example.ph.projeto_final_ed.model.StackModel;
@@ -23,13 +22,12 @@ import com.example.ph.projeto_final_ed.model.StackModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StackFragment extends Fragment implements View.OnCreateContextMenuListener{
-    private PilhaEnc stack;
+public class QueueFragment extends Fragment {
+    private FilaEnc queue;
     private ListView listView;
-    private TextView textSizeStack, textTopStack;
+    private TextView textSizeQueue, textFrontElement;
 
-
-    public StackFragment() {
+    public QueueFragment() {
         // Required empty public constructor
     }
 
@@ -38,19 +36,19 @@ public class StackFragment extends Fragment implements View.OnCreateContextMenuL
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_stack, container, false);
+        View view = inflater.inflate(R.layout.fragment_queue, container, false);
         listView = view.findViewById(R.id.list);
         FloatingActionButton floatingActionButtonAdd = view.findViewById(R.id.floatingActionButtonAdd);
         FloatingActionButton floatingActionButtonRemove = view.findViewById(R.id.floatingActionButtonRemove);
-        textSizeStack = view.findViewById(R.id.text_stack_size);
-        textTopStack = view.findViewById(R.id.text_stack_top);
+        textSizeQueue = view.findViewById(R.id.text_queue_size);
+        textFrontElement = view.findViewById(R.id.text_queue_front_element);
 
-        stack = new PilhaEnc();
+        queue = new FilaEnc();
 
 
 
         try {
-            configuraPilha();
+            configuraFila();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
@@ -63,18 +61,18 @@ public class StackFragment extends Fragment implements View.OnCreateContextMenuL
         floatingActionButtonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stack.pop();
+                queue.remove();
                 try {
-                    configuraPilha();
+                    configuraFila();
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
                 }
             }
         });
 
-
         return view;
     }
+
     private void createListDialog(LayoutInflater inflater, ViewGroup container){
         View viewDialog = inflater.inflate(R.layout.stack_add, container, false);
         final EditText newContent = viewDialog.findViewById(R.id.et_new_content_id);
@@ -84,9 +82,9 @@ public class StackFragment extends Fragment implements View.OnCreateContextMenuL
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int content = Integer.parseInt(newContent.getText().toString());
-                stack.push(content);
+                queue.insere(content);
                 try {
-                    configuraPilha();
+                    configuraFila();
                 } catch (CloneNotSupportedException e) {
                     e.printStackTrace();
                 }
@@ -96,27 +94,24 @@ public class StackFragment extends Fragment implements View.OnCreateContextMenuL
         dialog.show();
     }
 
-    private void configuraPilha() throws CloneNotSupportedException {
-        PilhaEnc aux = stack.getClone();
+    private void configuraFila() throws CloneNotSupportedException {
+        FilaEnc aux = queue.getClone();
 
-        StackModel[] stackModel = new StackModel[stack.tamanho()];
-        for(int i =  0; i<stack.tamanho(); i++){
-            stackModel[i] = new StackModel(aux.top());
-            aux.pop();
+        StackModel[] stackModel = new StackModel[queue.tamanho()];
+        for(int i = 0; i< queue.tamanho(); i++){
+            stackModel[i] = new StackModel(aux.primeiro());
+            aux.remove();
         }
-        if(stack.vazia()) {
-            textSizeStack.setText("Empty stack");
-            textTopStack.setVisibility(View.INVISIBLE);
+        if(queue.vazia()) {
+            textSizeQueue.setText("Empty queue");
+            textFrontElement.setVisibility(View.INVISIBLE);
         }else {
-            textSizeStack.setText("Stack Size: " + stack.tamanho());
-            textTopStack.setVisibility(View.VISIBLE);
-            textTopStack.setText("Top stack: "+stack.top());
+            textSizeQueue.setText("Queue Size: " + queue.tamanho());
+            textFrontElement.setVisibility(View.VISIBLE);
+            textFrontElement.setText("Front element: "+ queue.primeiro());
         }
         StackAdapter stackAdapter = new StackAdapter(getActivity(), stackModel);
         listView.setAdapter(stackAdapter);
     }
-
-
-
 
 }

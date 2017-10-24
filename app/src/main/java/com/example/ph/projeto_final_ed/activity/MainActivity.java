@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.fragment.ListFragment;
+import com.example.ph.projeto_final_ed.fragment.QueueFragment;
 import com.example.ph.projeto_final_ed.fragment.StackFragment;
 import com.example.ph.projeto_final_ed.helper.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
-    Fragment listFragment, stackFragment, queueFragment;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     stack();
                     return true;
                 case R.id.navigation_queue:
-                    //mTextMessage.setText(R.string.title_queue);
+                    queue();
                     return true;
             }
             return false;
@@ -45,21 +45,28 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
-        listFragment = new ListFragment();
-        stackFragment = new StackFragment();
+
         list();
 
 
     }
 
     private void list(){
+        Fragment listFragment = new ListFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, listFragment);
         fragmentTransaction.commit();
     }
     private void stack(){
+        Fragment stackFragment = new StackFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, stackFragment);
+        fragmentTransaction.commit();
+    }
+    private void queue(){
+        Fragment queueFragment = new QueueFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, queueFragment);
         fragmentTransaction.commit();
     }
 
