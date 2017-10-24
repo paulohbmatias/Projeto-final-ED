@@ -1,16 +1,12 @@
 package com.example.ph.projeto_final_ed.fragment;
 
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,9 +26,6 @@ import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.helper.LDE;
 import com.example.ph.projeto_final_ed.helper.ListAdapter;
 import com.example.ph.projeto_final_ed.model.ListModel;
-
-import static com.example.ph.projeto_final_ed.R.id.searchView;
-import static com.example.ph.projeto_final_ed.R.layout.list_add;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,7 +52,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
 
 
         listView = view.findViewById(R.id.list);
-        floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        floatingActionButton = view.findViewById(R.id.floatingActionButtonAdd);
         textSize = view.findViewById(R.id.text_list_size);
         spinner = view.findViewById(R.id.spinner);
         searchView = view.findViewById(R.id.searchView);
@@ -143,7 +136,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add("Remover");
+        menu.add("Remover da lista");
     }
 
     @Override
@@ -152,7 +145,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
 
-        if(item.getTitle().equals("Remover")){
+        if(item.getTitle().equals("Remover da lista")){
             position = info.position + 1;
             lde.remove(position);
             configuraLista(lde, false, 0);

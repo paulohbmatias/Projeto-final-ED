@@ -14,4 +14,6 @@
     <string name="value_position">value position</string>
     <string name="list_content">list content</string>
     <string name="size_list">List Size</string>
+    <string name="stack">Stack</string>
+    <string name="top_stack">Top stack</string>
 </resources>

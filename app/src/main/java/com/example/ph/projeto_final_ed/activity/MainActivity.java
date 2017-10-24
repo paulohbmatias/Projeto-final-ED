@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.fragment.ListFragment;
+import com.example.ph.projeto_final_ed.fragment.StackFragment;
 import com.example.ph.projeto_final_ed.helper.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     list();
                     return true;
                 case R.id.navigation_stack:
-                    //mTextMessage.setText(R.string.title_stack);
+                    stack();
                     return true;
                 case R.id.navigation_queue:
                     //mTextMessage.setText(R.string.title_queue);
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
         listFragment = new ListFragment();
+        stackFragment = new StackFragment();
         list();
 
 
@@ -53,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
     private void list(){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, listFragment);
+        fragmentTransaction.commit();
+    }
+    private void stack(){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, stackFragment);
         fragmentTransaction.commit();
     }
 
