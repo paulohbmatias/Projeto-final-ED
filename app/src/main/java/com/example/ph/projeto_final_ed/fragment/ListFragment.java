@@ -89,7 +89,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
             public void onClick(DialogInterface dialog, int which) {
                 int position = Integer.parseInt(newPosition.getText().toString());
                 int content = Integer.parseInt(newContent.getText().toString());
-                if(lde.insere(position, content))
+                if(lde.insere(position, content) && position>0)
                     configuraLista(lde, false, 0);
                 else
                     Toast.makeText(getContext(), "Posição inválida", Toast.LENGTH_SHORT).show();
