@@ -13,6 +13,7 @@ import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.fragment.ListFragment;
 import com.example.ph.projeto_final_ed.fragment.QueueFragment;
 import com.example.ph.projeto_final_ed.fragment.StackFragment;
+import com.example.ph.projeto_final_ed.fragment.TreeFragment;
 import com.example.ph.projeto_final_ed.helper.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_queue:
                     queue();
+                    return true;
+                case R.id.navigation_tree:
+                    tree();
                     return true;
             }
             return false;
@@ -67,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
         Fragment queueFragment = new QueueFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, queueFragment);
+        fragmentTransaction.commit();
+    }
+    private void tree(){
+        Fragment treeFragment = new TreeFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.content, treeFragment);
         fragmentTransaction.commit();
     }
 

@@ -11,15 +11,15 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
-import com.example.ph.projeto_final_ed.model.ListModel;
 import com.example.ph.projeto_final_ed.model.StackModel;
+import com.example.ph.projeto_final_ed.model.TreeModel;
 
-public class StackAdapter extends ArrayAdapter<StackModel> {
+public class TreeAdapter extends ArrayAdapter<TreeModel> {
     private Context context;
-    private StackModel[] stackModel;
+    private TreeModel[] stackModel;
 
-    public StackAdapter(@NonNull Context context, @NonNull StackModel[] objects) {
-        super(context, 0, 0, objects);
+    public TreeAdapter(@NonNull Context context, @NonNull TreeModel[] objects) {
+        super(context, 0, 0,objects);
         this.context = context;
         this.stackModel = objects;
     }
@@ -35,8 +35,7 @@ public class StackAdapter extends ArrayAdapter<StackModel> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             //Monta a view a partir do xml
-            assert inflater != null;
-            view = inflater.inflate(R.layout.model_stack, parent, false);
+            view = inflater.inflate(R.layout.model_tree, parent, false);
 
             //Recuperar elementos para exibição
             TextView stackItem = view.findViewById(R.id.item_stack);
@@ -44,7 +43,7 @@ public class StackAdapter extends ArrayAdapter<StackModel> {
 
 
             //Adicionar elementos a list
-            stackItem.setText(""+stackModel[position].getContent());
+            stackItem.setText(""+stackModel[position].getTextView());
         }
 
 

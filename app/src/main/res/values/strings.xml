@@ -16,4 +16,5 @@
     <string name="size_list">List Size</string>
     <string name="stack">Stack</string>
     <string name="top_stack">Top stack</string>
+    <string name="title_tree">Tree</string>
 </resources>

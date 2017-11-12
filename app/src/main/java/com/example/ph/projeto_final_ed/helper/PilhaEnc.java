@@ -25,7 +25,7 @@ public class PilhaEnc implements Cloneable {
 	public int tamanho() {
 	    return nElementos;
 
-	/*  No p = topo;
+	/*  NoTree p = topo;
 	    	int i = 0;
 	    	while(p != null){
 	       p = p.getProx();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/navigation_list"
@@ -15,5 +16,9 @@
         android:id="@+id/navigation_queue"
         android:icon="@drawable/table_row"
         android:title="@string/title_queue" />
+    <item
+        android:id="@+id/navigation_tree"
+        android:icon="@drawable/file_tree"
+        android:title="@string/title_tree" />
 
 </menu>
