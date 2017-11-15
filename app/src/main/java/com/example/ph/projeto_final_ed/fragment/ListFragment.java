@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.helper.LDE;
-import com.example.ph.projeto_final_ed.helper.ListAdapter;
+import com.example.ph.projeto_final_ed.adapter.ListAdapter;
 import com.example.ph.projeto_final_ed.model.ListModel;
 
 /**

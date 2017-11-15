@@ -7,13 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
 import com.example.ph.projeto_final_ed.fragment.ListFragment;
 import com.example.ph.projeto_final_ed.fragment.QueueFragment;
 import com.example.ph.projeto_final_ed.fragment.StackFragment;
-import com.example.ph.projeto_final_ed.fragment.TreeFragment;
+import com.example.ph.projeto_final_ed.fragment.TreeOptionFragment;
 import com.example.ph.projeto_final_ed.helper.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
     private void tree(){
-        Fragment treeFragment = new TreeFragment();
+        Fragment treeFragment = new TreeOptionFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, treeFragment);
         fragmentTransaction.commit();

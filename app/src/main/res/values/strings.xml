@@ -21,4 +21,7 @@
     <string name="child">Child</string>
     <string name="right">Right</string>
     <string name="left">Left</string>
+    <string name="root">Root</string>
+    <string name="ArvBin">Árvore Binária</string>
+    <string name="ABP">Árvore Binária de Pesquisa</string>
 </resources>

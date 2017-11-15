@@ -6,7 +6,7 @@
     android:padding="@dimen/activity_vertical_margin"
     android:scrollbars="none"
     android:background="#EEEEEE"
-    tools:context="com.example.ph.projeto_final_ed.fragment.TreeFragment">
+    tools:context="com.example.ph.projeto_final_ed.fragment.TreeFragmentArvBin">
 
 
         <LinearLayout
@@ -39,7 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:inputType="numberSigned" />
 
 </RelativeLayout>
 

@@ -145,7 +145,7 @@ public class ArvBin {
         if (T == null)
             return s;
 
-        s += T.getConteudo();
+        s += +T.getConteudo()+" ";
         if (T.getEsq() != null)
             s=getPreOrdem(T.getEsq(), s);
 
@@ -208,7 +208,10 @@ public class ArvBin {
 			exibePosOrdem(raiz);
 	}
 	public int getRaiz(){
-		return raiz.getConteudo();
+		if(vazia())
+			return -1;
+		else
+		    return raiz.getConteudo();
 	}
 	public int getEquerda(int valor){
         if (vazia())
@@ -216,8 +219,9 @@ public class ArvBin {
 
         //No res = busca(raiz, valor);
         //return res;
-        if(busca(raiz, valor).getEsq() != null){
-        	return busca(raiz, valor).getEsq().getConteudo();
+		NoTree no = busca(raiz, valor).getEsq();
+        if(no != null){
+        	return no.getConteudo();
 		}else{
         	return -1;
 		}
@@ -228,8 +232,9 @@ public class ArvBin {
 
         //No res = busca(raiz, valor);
         //return res;
-		if(busca(raiz, valor).getDir() != null){
-			return busca(raiz, valor).getDir().getConteudo();
+		NoTree no = busca(raiz, valor).getDir();
+		if(no != null){
+			return no.getConteudo();
 		}else{
 			return -1;
 		}
