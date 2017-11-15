@@ -17,4 +17,8 @@
     <string name="stack">Stack</string>
     <string name="top_stack">Top stack</string>
     <string name="title_tree">Tree</string>
+    <string name="parent">Parent</string>
+    <string name="child">Child</string>
+    <string name="right">Right</string>
+    <string name="left">Left</string>
 </resources>

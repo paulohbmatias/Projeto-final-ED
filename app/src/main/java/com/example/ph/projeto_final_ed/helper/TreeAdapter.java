@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.ph.projeto_final_ed.R;
-import com.example.ph.projeto_final_ed.model.StackModel;
 import com.example.ph.projeto_final_ed.model.TreeModel;
 
 public class TreeAdapter extends ArrayAdapter<TreeModel> {
@@ -35,10 +34,10 @@ public class TreeAdapter extends ArrayAdapter<TreeModel> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             //Monta a view a partir do xml
-            view = inflater.inflate(R.layout.model_tree, parent, false);
+            view = inflater.inflate(R.layout.model_tree_group, parent, false);
 
             //Recuperar elementos para exibição
-            TextView stackItem = view.findViewById(R.id.item_stack);
+            TextView stackItem = view.findViewById(R.id.item_tree_group);
 
 
 

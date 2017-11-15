@@ -4,15 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/item_stack"
+        android:id="@+id/item_tree_child"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textview_position"
-        android:layout_toRightOf="@+id/textview_content"
+        android:layout_marginStart="20dp"
         android:padding="@dimen/padding_text_list"
         android:text="@string/stack"
-        android:textAlignment="center"
         android:textColor="@android:color/black" />
 </RelativeLayout>

@@ -1,5 +1,8 @@
 package com.example.ph.projeto_final_ed.helper;
 
+import android.util.Log;
+import android.widget.Toast;
+
 public class ArvBin {
 	private NoTree raiz;
 
@@ -122,8 +125,8 @@ public class ArvBin {
 	private void exibePreOrdem(NoTree T) {
 		if (T == null)
 			return;
-	
-		System.out.print(" " + T.getConteudo());
+
+		Log.i("tree"," " + T.getConteudo());
 		if (T.getEsq() != null)
 			exibePreOrdem(T.getEsq());
 	
@@ -134,10 +137,30 @@ public class ArvBin {
 	/** Exibe o conteúdo de uma árvore em pré-ordem*/
 	public void exibePreOrdem() {
 		if (raiz == null)
-			System.out.println("Arvore vazia");
+            Log.i("tree","Arvore vazia");
 		else
 			exibePreOrdem(raiz);
-	}	
+	}
+    private String getPreOrdem(NoTree T, String s){
+        if (T == null)
+            return s;
+
+        s += T.getConteudo();
+        if (T.getEsq() != null)
+            s=getPreOrdem(T.getEsq(), s);
+
+        if (T.getDir() != null)
+            return getPreOrdem(T.getDir(), s);
+
+		return s;
+	}
+	public String getPreOrdem(){
+        String s = "";
+        if (raiz == null)
+            return "";
+        else
+            return getPreOrdem(raiz, s);
+    }
 	
 	
 	/** Exibe o conteúdo de uma árvore em pré-ordem*/
@@ -184,5 +207,32 @@ public class ArvBin {
 		else
 			exibePosOrdem(raiz);
 	}
+	public int getRaiz(){
+		return raiz.getConteudo();
+	}
+	public int getEquerda(int valor){
+        if (vazia())
+            return -1;
+
+        //No res = busca(raiz, valor);
+        //return res;
+        if(busca(raiz, valor).getEsq() != null){
+        	return busca(raiz, valor).getEsq().getConteudo();
+		}else{
+        	return -1;
+		}
+    }
+    public int getDireita(int valor){
+        if (vazia())
+            return -1;
+
+        //No res = busca(raiz, valor);
+        //return res;
+		if(busca(raiz, valor).getDir() != null){
+			return busca(raiz, valor).getDir().getConteudo();
+		}else{
+			return -1;
+		}
+    }
 	
 }
