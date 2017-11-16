@@ -207,6 +207,7 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
                 Toast.makeText(getContext(), "Consulta falhou", Toast.LENGTH_SHORT).show();
             }else{
                 ListaSeq lde1 = new ListaSeq();
+                lde1.iniciarObjeto(listaSeq.tamanho());
                 lde1.insere(1, listaSeq.elemento(q));
                 configuraLista(lde1, true, q);
                 listAdapter.setNotifyOnChange(true);
@@ -216,6 +217,7 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
                 Toast.makeText(getContext(), "Consulta falhou", Toast.LENGTH_SHORT).show();
             }else{
                 ListaSeq lde1 = new ListaSeq();
+                lde1.iniciarObjeto(listaSeq.tamanho());
                 lde1.insere(1, q);
                 configuraLista(lde1, true, listaSeq.posicao(q));
             }
