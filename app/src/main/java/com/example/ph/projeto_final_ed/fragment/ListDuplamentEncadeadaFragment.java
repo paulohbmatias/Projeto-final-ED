@@ -30,7 +30,7 @@ import com.example.ph.projeto_final_ed.model.ListModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment implements View.OnCreateContextMenuListener, SearchView.OnQueryTextListener {
+public class ListDuplamentEncadeadaFragment extends Fragment implements View.OnCreateContextMenuListener, SearchView.OnQueryTextListener {
 
     private LDE lde;
     private ListView listView;
@@ -40,7 +40,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
     private TextView textSize;
     private Spinner spinner;
     private SearchView searchView;
-    public ListFragment() {
+    public ListDuplamentEncadeadaFragment() {
         // Required empty public constructor
     }
 
@@ -48,7 +48,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_duplamente_encadeada, container, false);
 
 
         listView = view.findViewById(R.id.list);
@@ -78,7 +78,7 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         return view;
     }
 
-    private void createListDialog(LayoutInflater inflater, ViewGroup container){
+    private void createListDialog(final LayoutInflater inflater, final ViewGroup container){
         View viewDialog = inflater.inflate(R.layout.list_add, container, false);
         final EditText newPosition = viewDialog.findViewById(R.id.et_new_position_id);
         final EditText newContent = viewDialog.findViewById(R.id.et_new_content_id);
@@ -87,12 +87,24 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
         dialog.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                int position = Integer.parseInt(newPosition.getText().toString());
-                int content = Integer.parseInt(newContent.getText().toString());
-                if(lde.insere(position, content) && position>0)
-                    configuraLista(lde, false, 0);
-                else
-                    Toast.makeText(getContext(), "Posição inválida", Toast.LENGTH_SHORT).show();
+                try {
+                    if(newContent.getText().toString().equals("") || newPosition.getText().toString().equals("")){
+                        Toast.makeText(getActivity(), "Por favor preencha todos os campos", Toast.LENGTH_SHORT).show();
+                        createListDialog(inflater, container);
+                    }else {
+                        int position = Integer.parseInt(newPosition.getText().toString());
+                        int content = Integer.parseInt(newContent.getText().toString());
+                        if (lde.insere(position, content) && position > 0){
+                            Toast.makeText(getContext(), content+" inserido na posição "+position, Toast.LENGTH_SHORT).show();
+                            configuraLista(lde, false, 0);
+                        }else
+                            Toast.makeText(getContext(), "Posição inválida", Toast.LENGTH_SHORT).show();
+
+                    }
+                }catch (NumberFormatException e){
+                    Toast.makeText(getActivity(), "Por favor digite uma posição válida!", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -141,8 +153,12 @@ public class ListFragment extends Fragment implements View.OnCreateContextMenuLi
 
         if(item.getTitle().equals("Remover da lista")){
             position = info.position + 1;
-            lde.remove(position);
-            configuraLista(lde, false, 0);
+            int remove = lde.remove(position);
+            if(remove != -1){
+                Toast.makeText(getActivity(), remove+" removido da lista!", Toast.LENGTH_SHORT).show();
+                configuraLista(lde, false, 0);
+            }
+
             return true;
         }
 

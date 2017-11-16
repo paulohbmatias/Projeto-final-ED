@@ -1,12 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ph.projeto_final_ed.fragment.TreeOptionFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.ph.projeto_final_ed.fragment.ListOptionFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <android.support.design.widget.TabLayout
         android:id="@+id/tb_layout"
         android:layout_width="match_parent"
@@ -17,16 +16,16 @@
         app:tabMaxWidth="0dp">
 
         <android.support.design.widget.TabItem
-            android:id="@+id/item_a_fazer_id"
+            android:id="@+id/item_lista_sequencial_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ArvBin" />
+            android:text="@string/listaseq" />
 
         <android.support.design.widget.TabItem
-            android:id="@+id/item_fazendo_id"
+            android:id="@+id/item_lista_encadeada_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ABP" />
+            android:text="@string/listaenc" />
 
     </android.support.design.widget.TabLayout>
 

@@ -1,4 +1,4 @@
-package com.example.ph.projeto_final_ed.helper;
+package com.example.ph.projeto_final_ed.adapter;
 
 
 import android.content.Context;
@@ -36,7 +36,10 @@ public class StackAdapter extends ArrayAdapter<StackModel> {
 
             //Monta a view a partir do xml
             assert inflater != null;
-            view = inflater.inflate(R.layout.model_stack, parent, false);
+            if(stackModel[position].isTop())
+                view = inflater.inflate(R.layout.model_top_stack, parent, false);
+            else
+                view = inflater.inflate(R.layout.model_stack, parent, false);
 
             //Recuperar elementos para exibição
             TextView stackItem = view.findViewById(R.id.item_stack);

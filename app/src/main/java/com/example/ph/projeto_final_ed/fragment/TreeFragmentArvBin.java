@@ -48,7 +48,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_tree, container, false);
+        view = inflater.inflate(R.layout.fragment_tree_arvbin, container, false);
         fab = view.findViewById(R.id.floatingActionButtonAdd);
         searchView = view.findViewById(R.id.search);
         searchView.setOnQueryTextListener(this);
@@ -103,7 +103,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         spinner_position.setAdapter(adapter);
         spinner_parent.setAdapter(adapter2);
     }
-    private void createTreeDialog(LayoutInflater inflater, ViewGroup container, final ArvBin arvBin){
+    private void createTreeDialog(final LayoutInflater inflater, final ViewGroup container, final ArvBin arvBin){
         View viewDialog = inflater.inflate(R.layout.tree_add, container, false);
         spinner_position = viewDialog.findViewById(R.id.spinner_position);
         spinner_parent = viewDialog.findViewById(R.id.spinner_parent);
@@ -131,6 +131,9 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
                                 Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
                         }
                         configuraArvore(arvBin, view);
+                    }else {
+                        Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
+                        createTreeRootDialog(inflater, container, arvBin);
                     }
                 }catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Valor inválido", Toast.LENGTH_SHORT).show();
@@ -142,7 +145,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         dialog.create();
         dialog.show();
     }
-    private void createTreeRootDialog(LayoutInflater inflater, ViewGroup container, final ArvBin arvBin){
+    private void createTreeRootDialog(final LayoutInflater inflater, final ViewGroup container, final ArvBin arvBin){
         View viewDialog = inflater.inflate(R.layout.tree_root_add, container, false);
         final EditText newRoot = viewDialog.findViewById(R.id.et_new_root_id);
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
@@ -160,9 +163,10 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
                         }
                         else
                             Toast.makeText(getActivity(), "Falha ao inserir raiz", Toast.LENGTH_LONG).show();
-                    }else
-                        Toast.makeText(getActivity(),"Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
-
+                    }else {
+                        Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
+                        createTreeRootDialog(inflater, container, arvBin);
+                    }
                 }catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Valor inválido", Toast.LENGTH_SHORT).show();
                 }
@@ -221,7 +225,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         elemento = arvBin.getDireita(valor);
         if(elemento != -1){
             //Child
-            int layout = R.layout.child_left;
+            int layout = R.layout.child_right;
             MyHolder.IconTreeItem childItem = new MyHolder.IconTreeItem(R.drawable.child, ""+elemento);
             dir = new TreeNode(childItem).setViewHolder(new MyHolder(getContext(), false, layout, margin));
         }

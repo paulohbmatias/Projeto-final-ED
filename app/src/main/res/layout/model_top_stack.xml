@@ -12,7 +12,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textview_position"
         android:layout_toRightOf="@+id/textview_content"
-        android:background="@drawable/border"
+        android:background="@drawable/border_top"
         android:padding="@dimen/padding_text_list"
         android:text="@string/stack"
         android:textAlignment="center"

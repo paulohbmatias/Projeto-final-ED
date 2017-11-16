@@ -24,4 +24,7 @@
     <string name="root">Root</string>
     <string name="ArvBin">Árvore Binária</string>
     <string name="ABP">Árvore Binária de Pesquisa</string>
+    <string name="listaseq">Lista Sequencial</string>
+    <string name="listaenc">Lista Duplamente Encadeada</string>
+    <string name="tamMaxList">Tamanho máximo da lista</string>
 </resources>

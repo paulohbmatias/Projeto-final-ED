@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.ph.projeto_final_ed.R;
-import com.example.ph.projeto_final_ed.fragment.ListFragment;
+import com.example.ph.projeto_final_ed.fragment.ListOptionFragment;
 import com.example.ph.projeto_final_ed.fragment.QueueFragment;
 import com.example.ph.projeto_final_ed.fragment.StackFragment;
 import com.example.ph.projeto_final_ed.fragment.TreeOptionFragment;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void list(){
-        Fragment listFragment = new ListFragment();
+        Fragment listFragment = new ListOptionFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content, listFragment);
         fragmentTransaction.commit();

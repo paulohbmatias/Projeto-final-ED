@@ -10,15 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ph.projeto_final_ed.R;
+import com.example.ph.projeto_final_ed.adapter.TabListAdapter;
 import com.example.ph.projeto_final_ed.adapter.TabTreeAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TreeOptionFragment extends Fragment {
+public class ListOptionFragment extends Fragment {
 
 
-    public TreeOptionFragment() {
+    public ListOptionFragment() {
         // Required empty public constructor
     }
 
@@ -27,15 +28,13 @@ public class TreeOptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_tree_option, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_option, container, false);
         ViewPager viewPager = view.findViewById(R.id.vp_pagina);
         TabLayout tabLayout = view.findViewById(R.id.tb_layout);
-        TabTreeAdapter tabTreeAdapter = new TabTreeAdapter(getFragmentManager());
-        viewPager.setAdapter(tabTreeAdapter);
-        String[] tituloAbas = {"Árvore Binária", "Árvore Binária de Pesquisa"};
+        TabListAdapter tabListAdapter = new TabListAdapter(getFragmentManager());
+        viewPager.setAdapter(tabListAdapter);
         tabLayout.setupWithViewPager(viewPager);
         return view;
     }
-
 
 }

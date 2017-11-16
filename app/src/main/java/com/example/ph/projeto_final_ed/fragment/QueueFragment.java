@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ph.projeto_final_ed.R;
+import com.example.ph.projeto_final_ed.adapter.QueueAdapter;
 import com.example.ph.projeto_final_ed.helper.FilaEnc;
-import com.example.ph.projeto_final_ed.helper.PilhaEnc;
-import com.example.ph.projeto_final_ed.helper.StackAdapter;
+import com.example.ph.projeto_final_ed.adapter.StackAdapter;
+import com.example.ph.projeto_final_ed.model.QueueModel;
 import com.example.ph.projeto_final_ed.model.StackModel;
 
 /**
@@ -61,19 +63,24 @@ public class QueueFragment extends Fragment {
         floatingActionButtonRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queue.remove();
-                try {
-                    configuraFila();
-                } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
-                }
+                int remove = queue.remove();
+                if(remove != -1){
+                    try {
+                        Toast.makeText(getActivity(), remove+" removido do inicio da fila", Toast.LENGTH_SHORT).show();
+                        configuraFila();
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+                }else
+                    Toast.makeText(getActivity(), "Fila já está vazia!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         return view;
     }
 
-    private void createListDialog(LayoutInflater inflater, ViewGroup container){
+    private void createListDialog(final LayoutInflater inflater, final ViewGroup container){
         View viewDialog = inflater.inflate(R.layout.stack_add, container, false);
         final EditText newContent = viewDialog.findViewById(R.id.et_new_content_id);
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
@@ -81,12 +88,32 @@ public class QueueFragment extends Fragment {
         dialog.setPositiveButton("Adicionar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                int content = Integer.parseInt(newContent.getText().toString());
-                queue.insere(content);
                 try {
-                    configuraFila();
-                } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
+                    int content = Integer.parseInt(newContent.getText().toString());
+                    if(!newContent.getText().toString().equals("")){
+
+                        if(content>=0){
+                            if(queue.insere(content)){
+                                Toast.makeText(getActivity(), content+" inserido no final da fila!", Toast.LENGTH_SHORT).show();
+                                try {
+                                    configuraFila();
+                                } catch (CloneNotSupportedException e) {
+                                    e.printStackTrace();
+                                }
+                            }else{
+                                Toast.makeText(getActivity(),"Falha ao inserir elemento na fila!", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(getActivity(),"Não permitido número negativo!", Toast.LENGTH_SHORT).show();
+                            createListDialog(inflater, container);
+                        }
+
+                    }else {
+                        Toast.makeText(getActivity(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                        createListDialog(inflater, container);
+                    }
+                }catch (NumberFormatException e){
+                    Toast.makeText(getActivity(), "Por favor, insira um valor válido!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -97,9 +124,13 @@ public class QueueFragment extends Fragment {
     private void configuraFila() throws CloneNotSupportedException {
         FilaEnc aux = queue.getClone();
 
-        StackModel[] stackModel = new StackModel[queue.tamanho()];
+        QueueModel[] queueModel = new QueueModel[queue.tamanho()];
         for(int i = 0; i< queue.tamanho(); i++){
-            stackModel[i] = new StackModel(aux.primeiro());
+            queueModel[i] = new QueueModel(aux.primeiro());
+            if(i==queue.tamanho()-1)
+                queueModel[i].setEnd(true);
+            if(i==0)
+                queueModel[i].setTop(true);
             aux.remove();
         }
         if(queue.vazia()) {
@@ -110,8 +141,8 @@ public class QueueFragment extends Fragment {
             textFrontElement.setVisibility(View.VISIBLE);
             textFrontElement.setText("Front element: "+ queue.primeiro());
         }
-        StackAdapter stackAdapter = new StackAdapter(getActivity(), stackModel);
-        listView.setAdapter(stackAdapter);
+        QueueAdapter queueAdapter = new QueueAdapter(getActivity(), queueModel);
+        listView.setAdapter(queueAdapter);
     }
 
 }

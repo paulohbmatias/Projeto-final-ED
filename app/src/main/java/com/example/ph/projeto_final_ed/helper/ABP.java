@@ -55,6 +55,8 @@ public class ABP {
 		else
 			exibe(raiz);
 	}
+
+
 	
 	/**Insere um nó em uma árvore ABP
 	    Retorna 1 se a inserção for com sucesso.
@@ -88,5 +90,59 @@ public class ABP {
 		else
 			p.setDir(novoNo);
 		return true;
+	}
+
+	public int getRaiz(){
+		if(vazia())
+			return -1;
+		else
+			return raiz.getConteudo();
+	}
+
+	public int getEquerda(int valor){
+		if (vazia())
+			return -1;
+
+		//No res = busca(raiz, valor);
+		//return res;
+		NoTree no = busca(raiz, valor).getEsq();
+		if(no != null){
+			return no.getConteudo();
+		}else{
+			return -1;
+		}
+	}
+	public int getDireita(int valor){
+		if (vazia())
+			return -1;
+
+		//No res = busca(raiz, valor);
+		//return res;
+		NoTree no = busca(raiz, valor).getDir();
+		if(no != null){
+			return no.getConteudo();
+		}else{
+			return -1;
+		}
+	}
+	private String getPreOrdem(NoTree T, String s){
+		if (T == null)
+			return s;
+
+		s += T.getConteudo()+" ";
+		if (T.getEsq() != null)
+			s=getPreOrdem(T.getEsq(), s);
+
+		if (T.getDir() != null)
+			return getPreOrdem(T.getDir(), s);
+
+		return s;
+	}
+	public String getPreOrdem(){
+		String s = "";
+		if (raiz == null)
+			return "";
+		else
+			return getPreOrdem(raiz, s);
 	}
 }
