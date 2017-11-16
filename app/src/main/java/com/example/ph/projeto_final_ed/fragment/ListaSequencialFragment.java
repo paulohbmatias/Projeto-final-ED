@@ -63,12 +63,6 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
         configurarSpinner();
 
         listaSeq = new ListaSeq();
-        listaSeq.iniciarObjeto(10);
-        listaSeq.insere(1, 1);
-        listaSeq.insere(2, 2);
-        listaSeq.insere(3, 3);
-        listaSeq.insere(4, 4);
-        listaSeq.insere(5, 5);
         listView.setOnCreateContextMenuListener(this);
 
         if(listaSeq.isIniciada())
