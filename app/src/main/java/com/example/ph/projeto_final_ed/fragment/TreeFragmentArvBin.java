@@ -118,19 +118,24 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
                     if(!newChild.getText().toString().equals("")){
                         int parent = Integer.parseInt(spinner_parent.getSelectedItem().toString());
                         int child = Integer.parseInt(newChild.getText().toString());
-                        if(spinner_position.getSelectedItemPosition() == 0) {
-                            if(arvBin.insereEsq(parent, child))
-                                Toast.makeText(getActivity(), child+" inserido a esquerda de "+parent+"!", Toast.LENGTH_SHORT).show();
-                            else
-                                Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
+                        if(child>=0){
+                            if(spinner_position.getSelectedItemPosition() == 0) {
+                                if(arvBin.insereEsq(parent, child))
+                                    Toast.makeText(getActivity(), child+" inserido a esquerda de "+parent+"!", Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                if(arvBin.insereDir(parent, child))
+                                    Toast.makeText(getActivity(), child+" inserido a direita de "+parent+"!", Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
+                            }
+                            configuraArvore(arvBin, view);
+                        }else{
+                            Toast.makeText(getActivity(), "Valor negativo não permitido!", Toast.LENGTH_SHORT).show();
+                            createTreeDialog(inflater, container, arvBin);
                         }
-                        else {
-                            if(arvBin.insereDir(parent, child))
-                                Toast.makeText(getActivity(), child+" inserido a direita de "+parent+"!", Toast.LENGTH_SHORT).show();
-                            else
-                                Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
-                        }
-                        configuraArvore(arvBin, view);
                     }else {
                         Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
                         createTreeRootDialog(inflater, container, arvBin);
@@ -157,12 +162,17 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
 
                     if(!newRoot.getText().toString().equals("")){
                         int root = Integer.parseInt(newRoot.getText().toString());
-                        if(arvBin.insereRaiz(root)) {
-                            Toast.makeText(getActivity(), "Inserido " + root + " na raiz", Toast.LENGTH_LONG).show();
-                            configuraArvore(arvBin, view);
+                        if(root>=0){
+                            if(arvBin.insereRaiz(root)) {
+                                Toast.makeText(getActivity(), "Inserido " + root + " na raiz", Toast.LENGTH_LONG).show();
+                                configuraArvore(arvBin, view);
+                            }
+                            else
+                                Toast.makeText(getActivity(), "Falha ao inserir raiz", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getActivity(), "Valor negativo não permitido!", Toast.LENGTH_SHORT).show();
+                            createTreeRootDialog(inflater, container, arvBin);
                         }
-                        else
-                            Toast.makeText(getActivity(), "Falha ao inserir raiz", Toast.LENGTH_LONG).show();
                     }else {
                         Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
                         createTreeRootDialog(inflater, container, arvBin);

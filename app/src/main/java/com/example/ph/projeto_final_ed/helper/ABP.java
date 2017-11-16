@@ -62,6 +62,8 @@ public class ABP {
 	    Retorna 1 se a inserção for com sucesso.
 	    Caso contrário retorna 0*/
 	public boolean insere(int valor){
+		if(busca(valor) != null)
+			return false;
 
 		NoTree novoNo = new NoTree();
 		novoNo.setConteudo(valor);
@@ -72,6 +74,8 @@ public class ABP {
 	 		raiz = novoNo;
 			return true;
 		}
+
+
 
 	    // Procura a posicao correta pra inserir o novo no
 	    NoTree aux = raiz;

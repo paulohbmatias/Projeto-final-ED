@@ -93,13 +93,18 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
                 try {
                     if(!newChild.getText().toString().equals("")){
                         int child = Integer.parseInt(newChild.getText().toString());
+                        if (child>=0){
+                            if(arvBP.insere(child))
+                                Toast.makeText(getActivity(), child+" inserido!", Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
 
-                        if(arvBP.insere(child))
-                            Toast.makeText(getActivity(), child+" inserido!", Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(getActivity(), "Falha ao inserir elemento na arvore!", Toast.LENGTH_SHORT).show();
+                            configuraArvore(arvBP, view);
+                        }else{
+                            Toast.makeText(getActivity(), "Valor negativo não permitido!", Toast.LENGTH_SHORT).show();
+                            createTreeDialog(inflater, container, arvBP);
+                        }
 
-                        configuraArvore(arvBP, view);
                     }else{
                         Toast.makeText(getActivity(), "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
                         createTreeDialog(inflater, container, arvBP);
@@ -126,12 +131,17 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
 
                     if(!newRoot.getText().toString().equals("")){
                         int root = Integer.parseInt(newRoot.getText().toString());
-                        if(arvBP.insere(root)) {
-                            Toast.makeText(getActivity(), "Inserido " + root + " na raiz", Toast.LENGTH_LONG).show();
-                            configuraArvore(arvBP, view);
-                        }
-                        else {
-                            Toast.makeText(getActivity(), "Falha ao inserir raiz", Toast.LENGTH_LONG).show();
+                        if(root>=0){
+                            if(arvBP.insere(root)) {
+                                Toast.makeText(getActivity(), "Inserido " + root + " na raiz", Toast.LENGTH_LONG).show();
+                                configuraArvore(arvBP, view);
+                            }
+                            else {
+                                Toast.makeText(getActivity(), "Falha ao inserir raiz", Toast.LENGTH_LONG).show();
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Valor negativo não permitido!", Toast.LENGTH_SHORT).show();
+                            createTreeRootDialog(inflater, container, arvBP);
                         }
                     }else {
                         Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
