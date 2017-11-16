@@ -157,6 +157,8 @@ public class ListDuplamentEncadeadaFragment extends Fragment implements View.OnC
             if(remove != -1){
                 Toast.makeText(getActivity(), remove+" removido da lista!", Toast.LENGTH_SHORT).show();
                 configuraLista(lde, false, 0);
+            }else{
+                Toast.makeText(getActivity(), "Falha ao remover da lista", Toast.LENGTH_SHORT).show();
             }
 
             return true;

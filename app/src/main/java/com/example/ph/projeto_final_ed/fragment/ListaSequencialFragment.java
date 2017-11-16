@@ -63,7 +63,12 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
         configurarSpinner();
 
         listaSeq = new ListaSeq();
-
+        listaSeq.iniciarObjeto(10);
+        listaSeq.insere(1, 1);
+        listaSeq.insere(2, 2);
+        listaSeq.insere(3, 3);
+        listaSeq.insere(4, 4);
+        listaSeq.insere(5, 5);
         listView.setOnCreateContextMenuListener(this);
 
         if(listaSeq.isIniciada())
@@ -191,6 +196,8 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
             if(remove != -1){
                 Toast.makeText(getActivity(), remove+" removido da lista!", Toast.LENGTH_SHORT).show();
                 configuraLista(listaSeq, false, 0);
+            }else{
+                Toast.makeText(getActivity(), "Falha ao remover da lista", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
