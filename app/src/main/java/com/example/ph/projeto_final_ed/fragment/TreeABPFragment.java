@@ -52,17 +52,17 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         // expandableListView = view.findViewById(R.id.list);
         //configTreeTeste(view);
         arvBP = new ABP();
-        arvBP.insere(20);
-        arvBP.insere(30);
-        arvBP.insere(50);
-        arvBP.insere(15);
-        arvBP.insere(8);
-        arvBP.insere(14);
-        arvBP.insere(23);
-        arvBP.insere(3);
-        arvBP.insere(9);
-        arvBP.insere(67);
-        arvBP.insere(35);
+//        arvBP.insere(20);
+//        arvBP.insere(30);
+//        arvBP.insere(50);
+//        arvBP.insere(15);
+//        arvBP.insere(8);
+//        arvBP.insere(14);
+//        arvBP.insere(23);
+//        arvBP.insere(3);
+//        arvBP.insere(9);
+//        arvBP.insere(67);
+//        arvBP.insere(35);
 
 
         configuraArvore(arvBP, view);

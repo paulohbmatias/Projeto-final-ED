@@ -46,11 +46,11 @@ public class QueueFragment extends Fragment {
         textFrontElement = view.findViewById(R.id.text_queue_front_element);
 
         queue = new FilaEnc();
-        queue.insere(1);
-        queue.insere(2);
-        queue.insere(3);
-        queue.insere(4);
-        queue.insere(5);
+//        queue.insere(1);
+//        queue.insere(2);
+//        queue.insere(3);
+//        queue.insere(4);
+//        queue.insere(5);
 
 
         try {

@@ -56,21 +56,21 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
        // expandableListView = view.findViewById(R.id.list);
         //configTreeTeste(view);
         arvBin = new ArvBin();
-        arvBin.insereRaiz(2);
-        arvBin.insereEsq(2, 3);
-        arvBin.insereDir(2, 4);
-        arvBin.insereEsq(3, 5);
-        arvBin.insereDir(3, 6);
-        arvBin.insereEsq(4, 7);
-        arvBin.insereDir(4, 8);
-        arvBin.insereEsq(5, 9);
-        arvBin.insereDir(5, 10);
-        arvBin.insereEsq(6, 11);
-        arvBin.insereDir(6, 12);
-        arvBin.insereEsq(12, 14);
-        arvBin.insereDir(12, 13);
-        arvBin.insereEsq(8, 15);
-        arvBin.insereDir(8, 16);
+//        arvBin.insereRaiz(2);
+//        arvBin.insereEsq(2, 3);
+//        arvBin.insereDir(2, 4);
+//        arvBin.insereEsq(3, 5);
+//        arvBin.insereDir(3, 6);
+//        arvBin.insereEsq(4, 7);
+//        arvBin.insereDir(4, 8);
+//        arvBin.insereEsq(5, 9);
+//        arvBin.insereDir(5, 10);
+//        arvBin.insereEsq(6, 11);
+//        arvBin.insereDir(6, 12);
+//        arvBin.insereEsq(12, 14);
+//        arvBin.insereDir(12, 13);
+//        arvBin.insereEsq(8, 15);
+//        arvBin.insereDir(8, 16);
 
         configuraArvore(arvBin, view);
         fab.setOnClickListener(new View.OnClickListener() {
