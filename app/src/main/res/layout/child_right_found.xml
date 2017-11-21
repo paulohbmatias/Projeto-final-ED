@@ -23,9 +23,10 @@
         android:layout_below="@+id/text_right"
         android:layout_toEndOf="@+id/image"
         android:layout_toRightOf="@+id/image"
-        android:padding="11dp"
+        android:background="@drawable/border_found"
+        android:padding="8dp"
         android:text="List Item"
-        android:textColor="@color/green"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <TextView
@@ -35,6 +36,7 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/image"
         android:layout_toRightOf="@+id/image"
+        android:padding="8dp"
         android:paddingBottom="11dp"
         android:paddingRight="11dp"
         android:paddingTop="11dp"

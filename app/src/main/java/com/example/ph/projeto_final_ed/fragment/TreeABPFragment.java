@@ -52,17 +52,17 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         // expandableListView = view.findViewById(R.id.list);
         //configTreeTeste(view);
         arvBP = new ABP();
-//        arvBP.insere(20);
-//        arvBP.insere(30);
-//        arvBP.insere(50);
-//        arvBP.insere(15);
-//        arvBP.insere(8);
-//        arvBP.insere(14);
-//        arvBP.insere(23);
-//        arvBP.insere(3);
-//        arvBP.insere(9);
-//        arvBP.insere(67);
-//        arvBP.insere(35);
+        arvBP.insere(20);
+        arvBP.insere(30);
+        arvBP.insere(50);
+        arvBP.insere(15);
+        arvBP.insere(8);
+        arvBP.insere(14);
+        arvBP.insere(23);
+        arvBP.insere(3);
+        arvBP.insere(9);
+        arvBP.insere(67);
+        arvBP.insere(35);
 
 
         configuraArvore(arvBP, view);
@@ -174,7 +174,8 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         if(elemento != -1){
             //Child
             int layout = R.layout.child_right;
-            if(elemento == busca) layout = R.layout.child_right_found;
+            if(elemento == busca)
+                layout = R.layout.child_right_found;
             MyHolder.IconTreeItem childItem = new MyHolder.IconTreeItem(R.drawable.child, ""+elemento);
             dir = new TreeNode(childItem).setViewHolder(new MyHolder(getContext(), false, layout, margin));
         }

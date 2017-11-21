@@ -45,6 +45,11 @@ public class StackFragment extends Fragment implements View.OnCreateContextMenuL
         textTopStack = view.findViewById(R.id.text_stack_top);
 
         stack = new PilhaEnc();
+        stack.push(0);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
 
 
 
