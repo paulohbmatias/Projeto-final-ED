@@ -138,7 +138,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
                         }
                     }else {
                         Toast.makeText(getActivity(), "Por favor inserir todos os campos!", Toast.LENGTH_SHORT).show();
-                        createTreeRootDialog(inflater, container, arvBin);
+                        createTreeDialog(inflater, container, arvBin);
                     }
                 }catch (NumberFormatException e) {
                     Toast.makeText(getActivity(), "Valor inválido", Toast.LENGTH_SHORT).show();
