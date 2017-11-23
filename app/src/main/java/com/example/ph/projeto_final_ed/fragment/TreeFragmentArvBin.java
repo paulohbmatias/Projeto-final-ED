@@ -93,7 +93,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         ArrayList<Integer> parents = new ArrayList<>();
         for(String s : nos){
             int v = Integer.parseInt(s);
-            if(arvBin.getEquerda(v) == -1 || arvBin.getDireita(v) == -1) {
+            if(arvBin.getEsquerda(v) == -1 || arvBin.getDireita(v) == -1) {
                 parents.add(v);
             }
         }
@@ -191,7 +191,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBin.getEquerda(valor);
+        int elemento = arvBin.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -213,8 +213,8 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         }
         if(dir!= null)
             node.addChild(dir);
-        if(arvBin.getEquerda(valor) != -1){
-            configuraArvore(arvBin, arvBin.getEquerda(valor), esq, margin+PLUSMARGIN, busca);
+        if(arvBin.getEsquerda(valor) != -1){
+            configuraArvore(arvBin, arvBin.getEsquerda(valor), esq, margin+PLUSMARGIN, busca);
         }
         if(arvBin.getDireita(valor) != -1){
             configuraArvore(arvBin, arvBin.getDireita(valor), dir, margin+PLUSMARGIN, busca);
@@ -224,7 +224,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBin.getEquerda(valor);
+        int elemento = arvBin.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -244,8 +244,8 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         }
         if(dir!= null)
             node.addChild(dir);
-        if(arvBin.getEquerda(valor) != -1){
-            configuraArvore(arvBin, arvBin.getEquerda(valor), esq, margin+PLUSMARGIN);
+        if(arvBin.getEsquerda(valor) != -1){
+            configuraArvore(arvBin, arvBin.getEsquerda(valor), esq, margin+PLUSMARGIN);
         }
         if(arvBin.getDireita(valor) != -1){
             configuraArvore(arvBin, arvBin.getDireita(valor), dir, margin+PLUSMARGIN);
@@ -268,7 +268,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         }
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBin.getEquerda(valor);
+        int elemento = arvBin.getEsquerda(valor);
         if(elemento != -1){
             //Child
             MyHolder.IconTreeItem childItem = new MyHolder.IconTreeItem(R.drawable.child, ""+elemento);
@@ -286,8 +286,8 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         if(dir!= null) {
             parent.addChild(dir);
         }
-        if(arvBin.getEquerda(valor) != -1){
-            configuraArvore(arvBin, arvBin.getEquerda(valor), esq, margin+PLUSMARGIN);
+        if(arvBin.getEsquerda(valor) != -1){
+            configuraArvore(arvBin, arvBin.getEsquerda(valor), esq, margin+PLUSMARGIN);
         }
         if(arvBin.getDireita(valor) != -1){
             configuraArvore(arvBin, arvBin.getDireita(valor), dir, margin+PLUSMARGIN);
@@ -314,7 +314,7 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBin.getEquerda(valor);
+        int elemento = arvBin.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -336,8 +336,8 @@ public class TreeFragmentArvBin extends Fragment implements SearchView.OnQueryTe
         if(dir!= null) {
             parent.addChild(dir);
         }
-        if(arvBin.getEquerda(valor) != -1){
-            configuraArvore(arvBin, arvBin.getEquerda(valor), esq, margin+PLUSMARGIN, busca);
+        if(arvBin.getEsquerda(valor) != -1){
+            configuraArvore(arvBin, arvBin.getEsquerda(valor), esq, margin+PLUSMARGIN, busca);
         }
         if(arvBin.getDireita(valor) != -1){
             configuraArvore(arvBin, arvBin.getDireita(valor), dir, margin+PLUSMARGIN, busca);

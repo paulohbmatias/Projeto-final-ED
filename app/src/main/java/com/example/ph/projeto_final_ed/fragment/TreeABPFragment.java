@@ -9,11 +9,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ph.projeto_final_ed.R;
@@ -21,9 +19,6 @@ import com.example.ph.projeto_final_ed.activity.MyHolder;
 import com.example.ph.projeto_final_ed.atv.model.TreeNode;
 import com.example.ph.projeto_final_ed.atv.view.AndroidTreeView;
 import com.example.ph.projeto_final_ed.helper.ABP;
-import com.example.ph.projeto_final_ed.helper.ArvBin;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -161,7 +156,7 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBP.getEquerda(valor);
+        int elemento = arvBP.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -184,8 +179,8 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         }
         if(dir!= null)
             node.addChild(dir);
-        if(arvBP.getEquerda(valor) != -1){
-            configuraArvore(arvBP, arvBP.getEquerda(valor), esq, margin+PLUSMARGIN, busca);
+        if(arvBP.getEsquerda(valor) != -1){
+            configuraArvore(arvBP, arvBP.getEsquerda(valor), esq, margin+PLUSMARGIN, busca);
         }
         if(arvBP.getDireita(valor) != -1){
             configuraArvore(arvBP, arvBP.getDireita(valor), dir, margin+PLUSMARGIN, busca);
@@ -195,7 +190,7 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBP.getEquerda(valor);
+        int elemento = arvBP.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -215,8 +210,8 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         }
         if(dir!= null)
             node.addChild(dir);
-        if(arvBP.getEquerda(valor) != -1){
-            configuraArvore(arvBP, arvBP.getEquerda(valor), esq, margin+PLUSMARGIN);
+        if(arvBP.getEsquerda(valor) != -1){
+            configuraArvore(arvBP, arvBP.getEsquerda(valor), esq, margin+PLUSMARGIN);
         }
         if(arvBP.getDireita(valor) != -1){
             configuraArvore(arvBP, arvBP.getDireita(valor), dir, margin+PLUSMARGIN);
@@ -239,7 +234,7 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         }
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBP.getEquerda(valor);
+        int elemento = arvBP.getEsquerda(valor);
         if(elemento != -1){
             //Child
             MyHolder.IconTreeItem childItem = new MyHolder.IconTreeItem(R.drawable.child, ""+elemento);
@@ -257,8 +252,8 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         if(dir!= null) {
             parent.addChild(dir);
         }
-        if(arvBP.getEquerda(valor) != -1){
-            configuraArvore(arvBP, arvBP.getEquerda(valor), esq, margin+PLUSMARGIN);
+        if(arvBP.getEsquerda(valor) != -1){
+            configuraArvore(arvBP, arvBP.getEsquerda(valor), esq, margin+PLUSMARGIN);
         }
         if(arvBP.getDireita(valor) != -1){
             configuraArvore(arvBP, arvBP.getDireita(valor), dir, margin+PLUSMARGIN);
@@ -285,7 +280,7 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
 
         TreeNode esq = null;
         TreeNode dir = null;
-        int elemento = arvBP.getEquerda(valor);
+        int elemento = arvBP.getEsquerda(valor);
         if(elemento != -1){
             //Child
             int layout = R.layout.child_left;
@@ -307,8 +302,8 @@ public class TreeABPFragment extends Fragment implements SearchView.OnQueryTextL
         if(dir!= null) {
             parent.addChild(dir);
         }
-        if(arvBP.getEquerda(valor) != -1){
-            configuraArvore(arvBP, arvBP.getEquerda(valor), esq, margin+PLUSMARGIN, busca);
+        if(arvBP.getEsquerda(valor) != -1){
+            configuraArvore(arvBP, arvBP.getEsquerda(valor), esq, margin+PLUSMARGIN, busca);
         }
         if(arvBP.getDireita(valor) != -1){
             configuraArvore(arvBP, arvBP.getDireita(valor), dir, margin+PLUSMARGIN, busca);

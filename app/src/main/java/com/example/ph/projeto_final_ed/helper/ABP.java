@@ -103,7 +103,7 @@ public class ABP {
 			return raiz.getConteudo();
 	}
 
-	public int getEquerda(int valor){
+	public int getEsquerda(int valor){
 		if (vazia())
 			return -1;
 

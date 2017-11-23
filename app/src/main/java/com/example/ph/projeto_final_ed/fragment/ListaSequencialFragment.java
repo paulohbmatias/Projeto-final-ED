@@ -91,7 +91,7 @@ public class ListaSequencialFragment extends Fragment implements SearchView.OnQu
                 try {
                     if(!newSize.getText().toString().equals("")){
                         int size = Integer.parseInt(newSize.getText().toString());
-                        if (size < 0){
+                        if (size <= 0){
                             Toast.makeText(getActivity(), "Por favor, digite um tamanho válido", Toast.LENGTH_SHORT).show();
                             createListInitDialog(inflater, container);
                         }
